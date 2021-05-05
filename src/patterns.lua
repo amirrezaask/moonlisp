@@ -52,7 +52,7 @@ function patterns.either(...)
   return patterns.reduce({...}, function(a, b) return a+b end)
 end
 
-function patterns.capture(...)
+function patterns.capture_table(...)
   return lpeg.Ct(...)
 end
 
