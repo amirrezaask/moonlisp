@@ -23,7 +23,7 @@ local symbol = whitespace * p.apply(p.one_or_more(
   p.either(
     p.range('az'),
     p.range('AZ'),
-    p.one_of('-_?!')
+    p.one_of(':.-_?!')
 )), types.make_symbol)
 
 local number = whitespace * p.apply(p.apply(p.one_or_more(p.range('09')), tonumber), types.make_number)
@@ -40,4 +40,4 @@ local moonlisp_parser = p.grammer {
     * endings
 }
 
-return {parser = moonlisp_parser, types = types}
+return { parser = moonlisp_parser, types = types }

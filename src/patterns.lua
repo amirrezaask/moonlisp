@@ -45,7 +45,6 @@ function patterns.reduce(t, f)
     end
   end
   return acc 
-
 end
 
 function patterns.all(...)

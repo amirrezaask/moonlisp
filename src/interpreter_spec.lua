@@ -11,18 +11,31 @@ describe('make lua code', function()
     local code = interpreter(sexp)
     equal('handle(1, 2)', code)
   end)
+
   it('handle numbers', function()
-
+    local sexp = parser:match('2')
+    local code = interpreter(sexp)
+    equal('2', code)
   end)
+
   it('handle strings', function()
-
+    local sexp = parser:match('"amirreza"')
+    local code = interpreter(sexp)
+    equal('"amirreza"', code)
   end)
+
   it('handle symbols', function()
-
+    local sexp = parser:match('symbol')
+    local code = interpreter(sexp)
+    equal('symbol', code)
   end)
+
   it('handle def', function()
-
+    local sexp = parser:match('(def name "value")')
+    local code = interpreter(sexp)
+    equal('local name = "value"', code)
   end)
+
   it('handle fn', function()
 
   end)
