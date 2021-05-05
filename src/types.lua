@@ -18,8 +18,8 @@ function types.make_symbol(n)
   return {t=types.symbol, value=n}
 end
 
-function types.make_list(n)
-  return {t=types.list, value=n}
+function types.make_list(opts)
+  return {t=types.list, value=opts}
 end
 
 function types.make_func(n)

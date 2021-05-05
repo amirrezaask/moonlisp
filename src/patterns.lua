@@ -51,7 +51,7 @@ function patterns.either(...)
 end
 
 function patterns.capture(...)
-  return lpeg.C(...)
+  return lpeg.Ct(...)
 end
 
 function patterns.apply(p, fn)

@@ -1,2 +1,2 @@
 test:
-	@busted src
+	@busted -v src

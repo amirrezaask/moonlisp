@@ -16,8 +16,9 @@ describe('parser: ', function()
     equal(types.make_symbol('amirreza'), parser:match('amirreza'))
     equal(types.make_symbol('exists?'), parser:match('exists?'))
   end)
-
-  -- it('list', function()
-  --   equal({1, 2, 3}, parser:match('[1 2 3]'))
-  -- end)
+  -- TODO(amirreza): parse strings
+  -- TODO(amirreza): parse functions
+  it('list', function()
+    equal(types.make_list({types.make_number(1), types.make_number(2), types.make_symbol('aa')}), parser:match('[1 2 aa]'))
+  end)
 end)
