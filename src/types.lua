@@ -35,7 +35,15 @@ function types.make_list(t)
       end
     end
     return string.format('{%s}', table.concat(elems, ', '))
-  end}
+  end, cs=function(self)
+    local elems = {}
+    for _, e in ipairs(self.value) do
+      if e.represent then
+        table.insert(elems, e:represent())
+      end
+      return table.concat(elems, ', ') 
+    end
+    end}
 end
 
 return types

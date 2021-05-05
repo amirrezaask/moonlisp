@@ -4,18 +4,18 @@ local eval
 
 local function eval_def(sexp)
   local name = sexp.value[2].value
-  local value = sexp.value[3]:represent()
+  local value = eval(sexp.value[3])
   return string.format("local %s = %s", name, value)
 end
 
 local function eval_fn(sexp)
   print(inspect(sexp))
-  local arg_list = sexp.value[2]:represent()
+  local arg_list = sexp.value[2]:cs()
   local body = {}
   for i=3,#sexp.value do
     table.insert(body, eval(sexp.value[i]))
   end
-  return string.format('function(%s)%send', arg_list, table.concat(body, '\n'))
+  return string.format('function(%s)\n%s\nend', arg_list, table.concat(body, '\n'))
 end
 
 local function eval_macro(sexp)
@@ -70,6 +70,6 @@ eval = function(sexp)
 end
 
 local parser = require('parser').parser
-local code = parser:match('(fn (name) (print name) (print name))')
-print(inspect(eval(code)))
+local code = parser:match('(def myfn (fn (name) (print name) (print name)))')
+print(eval(code))
 return eval
