@@ -5,9 +5,11 @@ local patterns = {}
 function patterns.one_of(...)
   return lpeg.S(...)
 end
+
 function patterns.grammer(...)
   return lpeg.P(...)
 end
+
 function patterns.range(...)
   return lpeg.R(...)
 end

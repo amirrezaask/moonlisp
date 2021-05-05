@@ -18,8 +18,11 @@ function types.make_symbol(n)
   return {t=types.symbol, value=n}
 end
 
-function types.make_list(opts)
-  return {t=types.list, value=opts}
+function types.make_list(t)
+  -- if t.t == 'list' then
+  --   t.value = {}
+  -- end
+  return {t=types.list, value=t}
 end
 
 function types.make_func(n)

@@ -20,5 +20,6 @@ describe('parser: ', function()
   -- TODO(amirreza): parse functions
   it('list', function()
     equal(types.make_list({types.make_number(1), types.make_number(2), types.make_symbol('aa')}), parser:match('[1 2 aa]'))
+    equal(types.make_list({types.make_list({types.make_number(1), types.make_number(2)})}).value[1].value[1].value, parser:match('[(1 2)]').value[1].value[1].value)
   end)
 end)
