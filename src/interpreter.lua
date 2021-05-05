@@ -1,5 +1,6 @@
 local inspect = require('inspect')
 local interpreter = {}
+local eval 
 
 local function eval_def(sexp)
   local name = sexp.value[2].value
@@ -8,6 +9,13 @@ local function eval_def(sexp)
 end
 
 local function eval_fn(sexp)
+  print(inspect(sexp))
+  local arg_list = sexp.value[2]:represent()
+  local body = {}
+  for i=3,#sexp.value do
+    table.insert(body, eval(sexp.value[i]))
+  end
+  return string.format('function(%s)%send', arg_list, table.concat(body, '\n'))
 end
 
 local function eval_macro(sexp)
@@ -55,13 +63,13 @@ local function handle_function_call(sexp)
   return string.format("%s(%s)", fn, table.concat(args, ", "))
 end
 
-local eval = function(sexp)
+eval = function(sexp)
   if handle_values(sexp) then return handle_values(sexp) end
   if is_special_form(sexp) then return handle_special_forms(sexp) end
   return handle_function_call(sexp) 
 end
 
--- local parser = require('parser').parser
--- local code = parser:match('2')
--- print(inspect(eval(code)))
+local parser = require('parser').parser
+local code = parser:match('(fn (name) (print name) (print name))')
+print(inspect(eval(code)))
 return eval

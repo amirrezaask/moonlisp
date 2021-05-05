@@ -37,7 +37,9 @@ describe('make lua code', function()
   end)
 
   it('handle fn', function()
-
+    local sexp = parser:match('(fn (name) (print name))')
+    local code = interpreter(sexp)
+    equal('function(name)\nprint(name)end', code)
   end)
   it('handle macro', function()
 
