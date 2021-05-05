@@ -2,7 +2,6 @@ local types = {
   number = "number",
   string = "string",
   list = "list",
-  func = "function",
   symbol = 'symbol',
 }
 
@@ -20,10 +19,6 @@ end
 
 function types.make_list(t)
   return {t=types.list, value=t}
-end
-
-function types.make_func(n)
-  return {t=types.func, value=n}
 end
 
 return types
