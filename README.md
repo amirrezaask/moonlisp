@@ -3,7 +3,7 @@ a lisp on luajit
 
 # Usage
 ### moonlisp
-```lisp
+```clojure
 (def myfn 
   (fn (name)
     (print name)
@@ -17,7 +17,7 @@ end
 ```
 
 ### moonlisp
-```lisp
+```clojure
 (def mytable ())
 (table.insert mytable 1)
 ```
