@@ -19,9 +19,6 @@ function types.make_symbol(n)
 end
 
 function types.make_list(t)
-  -- if t.t == 'list' then
-  --   t.value = {}
-  -- end
   return {t=types.list, value=t}
 end
 

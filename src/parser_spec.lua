@@ -18,17 +18,12 @@ describe('parser: ', function()
     equal(types.make_symbol('exists?'), parser:match('exists?'))
   end)
 
-  it('function', function()
-
-  end)
-
   it('string', function()
     -- TODO(amirreza): check if open and close quote are the same single or double
     equal(types.make_string('amirreza'), parser:match([["amirreza"]]))
     equal(types.make_string('amirreza'), parser:match([['amirreza']]))
   end)
 
-  -- TODO(amirreza): parse functions
   it('list', function()
     equal(types.make_list({types.make_number(1), types.make_number(2), types.make_symbol('aa')}), parser:match('[1 2 aa]'))
     equal(types.make_list({types.make_list({types.make_number(1), types.make_number(2)})}).value[1].value[1].value, parser:match('[(1 2)]').value[1].value[1].value)

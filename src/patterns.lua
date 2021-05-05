@@ -6,6 +6,10 @@ function patterns.one_of(...)
   return lpeg.S(...)
 end
 
+function patterns.exact(s)
+  return lpeg.P(s)
+end
+
 function patterns.grammer(...)
   return lpeg.P(...)
 end
